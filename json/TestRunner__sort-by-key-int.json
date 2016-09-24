@@ -1,0 +1,486 @@
+{
+  "0": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": true,
+    "nominalrate": 0.0,
+    "parentsIds": [],
+    "skipped": false,
+    "weight": 2
+  },
+  "1": {
+    "RDDIds": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "2": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "3": {
+    "RDDIds": [
+      4
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      2
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "4": {
+    "RDDIds": [
+      6,
+      1,
+      0,
+      5
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "5": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "6": {
+    "RDDIds": [
+      7
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      5
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "7": {
+    "RDDIds": [
+      9,
+      8,
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "8": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "9": {
+    "RDDIds": [
+      10
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      8
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "10": {
+    "RDDIds": [
+      12,
+      1,
+      11,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "11": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "12": {
+    "RDDIds": [
+      13
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      11
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "13": {
+    "RDDIds": [
+      15,
+      1,
+      0,
+      14
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "14": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "15": {
+    "RDDIds": [
+      16
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      14
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "16": {
+    "RDDIds": [
+      18,
+      1,
+      0,
+      17
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "17": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "18": {
+    "RDDIds": [
+      19
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      17
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "19": {
+    "RDDIds": [
+      21,
+      20,
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "20": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "21": {
+    "RDDIds": [
+      22
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      20
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "22": {
+    "RDDIds": [
+      24,
+      23,
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "23": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "24": {
+    "RDDIds": [
+      25
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      23
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "25": {
+    "RDDIds": [
+      27,
+      1,
+      0,
+      26
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "26": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "27": {
+    "RDDIds": [
+      28
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      26
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "28": {
+    "RDDIds": [
+      30,
+      1,
+      29,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 0
+  },
+  "29": {
+    "RDDIds": [
+      1,
+      0
+    ],
+    "cachedRDDs": [
+      1
+    ],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      0
+    ],
+    "skipped": false,
+    "weight": 1
+  },
+  "30": {
+    "RDDIds": [
+      31
+    ],
+    "cachedRDDs": [],
+    "genstage": false,
+    "nominalrate": 0.0,
+    "parentsIds": [
+      29
+    ],
+    "skipped": false,
+    "weight": 0
+  }
+}
