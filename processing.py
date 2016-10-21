@@ -1,3 +1,4 @@
+import bz2
 import glob
 import re
 from collections import OrderedDict
@@ -10,9 +11,16 @@ for log in glob.glob("./logs/app-*"):
     appname = ""
     # Build stage dictionary
     stageDict = OrderedDict()
-    with open(log) as logfile:
+    if ".bz" in log:
+        fileOpen = bz2.BZ2File(log, "r")
+    else:
+        fileOpen = open(log)
+
+    with fileOpen as logfile:
         print(log)
         for line in logfile:
+            if ".bz" in log:
+                line = line.decode("utf-8")
             data = json.loads(line)
             try:
                 if data["Event"] == "SparkListenerApplicationStart":
@@ -77,8 +85,14 @@ for log in glob.glob("./logs/app-*"):
                 print(data)
 
     skipped = []
-    with open(log) as logfile:
+    if ".bz" in log:
+        fileOpen = bz2.BZ2File(log, "r")
+    else:
+        fileOpen = open(log)
+    with fileOpen as logfile:
         for line in logfile:
+            if ".bz" in log:
+                line = line.decode("utf-8")
             data = json.loads(line)
             try:
                 if data["Event"] == "SparkListenerJobStart":
