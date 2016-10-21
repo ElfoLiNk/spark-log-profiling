@@ -25,7 +25,6 @@ for log in glob.glob("./logs/app-*"):
                         if stage["Stage ID"] == 0:
                             stageDict[0]["totalduration"] = 0
                         stageDict[stage["Stage ID"]]["name"] = stage['Stage Name']
-                        # TODO stageDict[stage["Stage ID"]]["genstage"] = True if len(stageDict) == 1 else False
                         stageDict[stage["Stage ID"]]["genstage"] = False
                         stageDict[stage["Stage ID"]]["parentsIds"] = stage["Parent IDs"]
                         stageDict[stage["Stage ID"]]["nominalrate"] = 0.0
@@ -44,8 +43,8 @@ for log in glob.glob("./logs/app-*"):
                     stageDict[data["Stage Info"]["Stage ID"]]["numtask"] = data["Stage Info"]['Number of Tasks']
                     for acc in data["Stage Info"]["Accumulables"]:
                         if acc["Name"] == "internal.metrics.executorRunTime":
-                            stageDict[data["Stage Info"]["Stage ID"]]["duration"] = acc["Value"]
-                            stageDict[0]["totalduration"] += acc["Value"]
+                            stageDict[data["Stage Info"]["Stage ID"]]["duration"] = int(acc["Value"])
+                            stageDict[0]["totalduration"] += int(acc["Value"])
                         if acc["Name"] == "internal.metrics.input.recordsRead":
                             stageDict[data["Stage Info"]["Stage ID"]]["recordsread"] = acc["Value"]
                         else:
@@ -180,6 +179,8 @@ for log in glob.glob("./logs/app-*"):
                 else:
                     stageOutput = stageDict[stageId]["recordswrite"] + stageDict[stageId]["shufflerecordswrite"]
                     stageDict[stageId]["nominalrate"] = stageInput / (stageDict[stageId]["duration"] / 1000.0)
+            if stageDict[stageId]["nominalrate"] == 0.0:
+                stageDict[stageId]["genstage"] = True
 
     totalduration = stageDict[0]["totalduration"]
     for key in stageDict.keys():
