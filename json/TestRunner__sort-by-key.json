@@ -1,0 +1,137 @@
+{
+  "0": {
+    "RDDIds": {
+      "0": {
+        "callsite": "parallelize at DataGenerator.scala:52",
+        "name": "ParallelCollectionRDD"
+      },
+      "1": {
+        "callsite": "mapPartitionsWithIndex at DataGenerator.scala:52",
+        "name": "MapPartitionsRDD"
+      },
+      "2": {
+        "callsite": "map at DataGenerator.scala:119",
+        "name": "MapPartitionsRDD"
+      },
+      "3": {
+        "callsite": "map at DataGenerator.scala:139",
+        "name": "MapPartitionsRDD"
+      },
+      "4": {
+        "callsite": "saveAsTextFile at DataGenerator.scala:140",
+        "name": "MapPartitionsRDD"
+      }
+    },
+    "cachedRDDs": [],
+    "duration": 36908718,
+    "genstage": true,
+    "name": "saveAsTextFile at DataGenerator.scala:140",
+    "nominalrate": 0.0,
+    "numtask": 4000,
+    "parentsIds": [],
+    "recordsread": 0.0,
+    "recordswrite": 0.0,
+    "shufflerecordsread": 0.0,
+    "shufflerecordswrite": 0.0,
+    "skipped": false,
+    "totalduration": 51879060,
+    "weight": 2.702802248509417
+  },
+  "1": {
+    "RDDIds": {
+      "5": {
+        "callsite": "textFile at DataGenerator.scala:145",
+        "name": "hdfs://ec2-52-38-43-119.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+      },
+      "6": {
+        "callsite": "textFile at DataGenerator.scala:145",
+        "name": "hdfs://ec2-52-38-43-119.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+      },
+      "7": {
+        "callsite": "map at DataGenerator.scala:145",
+        "name": "MapPartitionsRDD"
+      },
+      "8": {
+        "callsite": "map at DataGenerator.scala:145",
+        "name": "MapPartitionsRDD"
+      },
+      "9": {
+        "callsite": "sortByKey at KVDataTest.scala:158",
+        "name": "MapPartitionsRDD"
+      },
+      "10": {
+        "callsite": "sortByKey at KVDataTest.scala:158",
+        "name": "MapPartitionsRDD"
+      }
+    },
+    "cachedRDDs": [],
+    "duration": 1147159,
+    "genstage": false,
+    "name": "sortByKey at KVDataTest.scala:158",
+    "nominalrate": 1743437.4833828614,
+    "numtask": 4000,
+    "parentsIds": [],
+    "recordsread": 2000000000,
+    "recordswrite": 0.0,
+    "shufflerecordsread": 0.0,
+    "shufflerecordswrite": 0.0,
+    "skipped": false,
+    "weight": 8.024963845465187
+  },
+  "2": {
+    "RDDIds": {
+      "5": {
+        "callsite": "textFile at DataGenerator.scala:145",
+        "name": "hdfs://ec2-52-38-43-119.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+      },
+      "6": {
+        "callsite": "textFile at DataGenerator.scala:145",
+        "name": "hdfs://ec2-52-38-43-119.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+      },
+      "7": {
+        "callsite": "map at DataGenerator.scala:145",
+        "name": "MapPartitionsRDD"
+      },
+      "8": {
+        "callsite": "map at DataGenerator.scala:145",
+        "name": "MapPartitionsRDD"
+      }
+    },
+    "cachedRDDs": [],
+    "duration": 4058999,
+    "genstage": false,
+    "name": "map at DataGenerator.scala:145",
+    "nominalrate": 492732.32144181366,
+    "numtask": 4000,
+    "parentsIds": [],
+    "recordsread": 2000000000,
+    "recordswrite": 0.0,
+    "shufflerecordsread": 0.0,
+    "shufflerecordswrite": 2000000000,
+    "skipped": false,
+    "weight": 2.702782262326253
+  },
+  "3": {
+    "RDDIds": {
+      "11": {
+        "callsite": "sortByKey at KVDataTest.scala:158",
+        "name": "ShuffledRDD"
+      }
+    },
+    "cachedRDDs": [],
+    "duration": 9764184,
+    "genstage": false,
+    "name": "count at KVDataTest.scala:158",
+    "nominalrate": 204830.2244201871,
+    "numtask": 4000,
+    "parentsIds": [
+      2
+    ],
+    "recordsread": 0.0,
+    "recordswrite": 0.0,
+    "shufflerecordsread": 2000000000,
+    "shufflerecordswrite": 0.0,
+    "skipped": false,
+    "weight": 1.0
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "0": {
+    "RDDIds": {
+      "0": {
+        "callsite": "parallelize at DataGenerator.scala:52",
+        "name": "ParallelCollectionRDD"
+      },
+      "1": {
+        "callsite": "mapPartitionsWithIndex at DataGenerator.scala:52",
+        "name": "MapPartitionsRDD"
+      },
+      "2": {
+        "callsite": "map at DataGenerator.scala:87",
+        "name": "MapPartitionsRDD"
+      },
+      "3": {
+        "callsite": "saveAsTextFile at DataGenerator.scala:88",
+        "name": "MapPartitionsRDD"
+      }
+    },
+    "cachedRDDs": [],
+    "duration": 12050426,
+    "genstage": true,
+    "name": "saveAsTextFile at DataGenerator.scala:88",
+    "nominalrate": 0.0,
+    "numtask": 4000,
+    "parentsIds": [],
+    "recordsread": 0.0,
+    "recordswrite": 0.0,
+    "shufflerecordsread": 0.0,
+    "shufflerecordswrite": 0.0,
+    "skipped": false,
+    "totalduration": 20968411,
+    "weight": 2.3700277898889217
+  },
+  "1": {
+    "RDDIds": {
+      "4": {
+        "callsite": "textFile at DataGenerator.scala:93",
+        "name": "hdfs://ec2-35-160-99-135.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+      },
+      "5": {
+        "callsite": "textFile at DataGenerator.scala:93",
+        "name": "hdfs://ec2-35-160-99-135.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+      },
+      "6": {
+        "callsite": "map at DataGenerator.scala:93",
+        "name": "MapPartitionsRDD"
+      },
+      "7": {
+        "callsite": "map at DataGenerator.scala:93",
+        "name": "MapPartitionsRDD"
+      }
+    },
+    "cachedRDDs": [],
+    "duration": 6152188,
+    "genstage": false,
+    "name": "map at DataGenerator.scala:93",
+    "nominalrate": 325087.59485243296,
+    "numtask": 4000,
+    "parentsIds": [],
+    "recordsread": 2000000000,
+    "recordswrite": 0.0,
+    "shufflerecordsread": 0.0,
+    "shufflerecordswrite": 734330212,
+    "skipped": false,
+    "weight": 1.7247815736450187
+  },
+  "2": {
+    "RDDIds": {
+      "8": {
+        "callsite": "reduceByKey at KVDataTest.scala:144",
+        "name": "ShuffledRDD"
+      }
+    },
+    "cachedRDDs": [],
+    "duration": 2765797,
+    "genstage": false,
+    "name": "count at KVDataTest.scala:144",
+    "nominalrate": 265504.0163829811,
+    "numtask": 4000,
+    "parentsIds": [
+      1
+    ],
+    "recordsread": 0.0,
+    "recordswrite": 0.0,
+    "shufflerecordsread": 734330212,
+    "shufflerecordswrite": 0.0,
+    "skipped": false,
+    "weight": 1.0
+  }
+}

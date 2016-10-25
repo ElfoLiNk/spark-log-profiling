@@ -1,486 +1,133 @@
 {
-  "0": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": true,
-    "nominalrate": 0.0,
-    "parentsIds": [],
-    "skipped": false,
-    "weight": 2
-  },
-  "1": {
-    "RDDIds": [
-      3,
-      1,
-      2,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "2": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "3": {
-    "RDDIds": [
-      4
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      2
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "4": {
-    "RDDIds": [
-      6,
-      1,
-      0,
-      5
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "5": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "6": {
-    "RDDIds": [
-      7
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      5
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "7": {
-    "RDDIds": [
-      9,
-      8,
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "8": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "9": {
-    "RDDIds": [
-      10
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      8
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "10": {
-    "RDDIds": [
-      12,
-      1,
-      11,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "11": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "12": {
-    "RDDIds": [
-      13
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      11
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "13": {
-    "RDDIds": [
-      15,
-      1,
-      0,
-      14
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "14": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "15": {
-    "RDDIds": [
-      16
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      14
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "16": {
-    "RDDIds": [
-      18,
-      1,
-      0,
-      17
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "17": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "18": {
-    "RDDIds": [
-      19
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      17
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "19": {
-    "RDDIds": [
-      21,
-      20,
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "20": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "21": {
-    "RDDIds": [
-      22
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      20
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "22": {
-    "RDDIds": [
-      24,
-      23,
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "23": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "24": {
-    "RDDIds": [
-      25
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      23
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "25": {
-    "RDDIds": [
-      27,
-      1,
-      0,
-      26
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "26": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "27": {
-    "RDDIds": [
-      28
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      26
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "28": {
-    "RDDIds": [
-      30,
-      1,
-      29,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 0
-  },
-  "29": {
-    "RDDIds": [
-      1,
-      0
-    ],
-    "cachedRDDs": [
-      1
-    ],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      0
-    ],
-    "skipped": false,
-    "weight": 1
-  },
-  "30": {
-    "RDDIds": [
-      31
-    ],
-    "cachedRDDs": [],
-    "genstage": false,
-    "nominalrate": 0.0,
-    "parentsIds": [
-      29
-    ],
-    "skipped": false,
-    "weight": 0
-  }
+    "0": {
+        "RDDIds": {
+            "0": {
+                "callsite": "parallelize at DataGenerator.scala:52",
+                "name": "ParallelCollectionRDD"
+            },
+            "1": {
+                "callsite": "mapPartitionsWithIndex at DataGenerator.scala:52",
+                "name": "MapPartitionsRDD"
+            },
+            "2": {
+                "callsite": "map at DataGenerator.scala:87",
+                "name": "MapPartitionsRDD"
+            },
+            "3": {
+                "callsite": "saveAsTextFile at DataGenerator.scala:88",
+                "name": "MapPartitionsRDD"
+            }
+        },
+        "cachedRDDs": [],
+        "duration": 11150599,
+        "genstage": true,
+        "name": "saveAsTextFile at DataGenerator.scala:88",
+        "nominalrate": 0.0,
+        "numtask": 4000,
+        "parentsIds": [],
+        "recordsread": 0.0,
+        "recordswrite": 0.0,
+        "shufflerecordsread": 0.0,
+        "shufflerecordswrite": 0.0,
+        "skipped": false,
+        "totalduration": 21825392,
+        "weight": 2.9786645542539913
+    },
+    "1": {
+        "RDDIds": {
+            "4": {
+                "callsite": "textFile at DataGenerator.scala:93",
+                "name": "hdfs://ec2-35-160-155-120.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+            },
+            "5": {
+                "callsite": "textFile at DataGenerator.scala:93",
+                "name": "hdfs://ec2-35-160-155-120.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+            },
+            "6": {
+                "callsite": "map at DataGenerator.scala:93",
+                "name": "MapPartitionsRDD"
+            },
+            "7": {
+                "callsite": "map at DataGenerator.scala:93",
+                "name": "MapPartitionsRDD"
+            },
+            "8": {
+                "callsite": "sortByKey at KVDataTest.scala:165",
+                "name": "MapPartitionsRDD"
+            },
+            "9": {
+                "callsite": "sortByKey at KVDataTest.scala:165",
+                "name": "MapPartitionsRDD"
+            }
+        },
+        "cachedRDDs": [],
+        "duration": 1216020,
+        "genstage": false,
+        "name": "sortByKey at KVDataTest.scala:165",
+        "nominalrate": 1644709.7909573857,
+        "numtask": 4000,
+        "parentsIds": [],
+        "recordsread": 2000000000,
+        "recordswrite": 0.0,
+        "shufflerecordsread": 0.0,
+        "shufflerecordswrite": 0.0,
+        "skipped": false,
+        "weight": 5.889234140885841
+    },
+    "2": {
+        "RDDIds": {
+            "4": {
+                "callsite": "textFile at DataGenerator.scala:93",
+                "name": "hdfs://ec2-35-160-155-120.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+            },
+            "5": {
+                "callsite": "textFile at DataGenerator.scala:93",
+                "name": "hdfs://ec2-35-160-155-120.us-west-2.compute.amazonaws.com:9000/test//spark-perf-kv-data"
+            },
+            "6": {
+                "callsite": "map at DataGenerator.scala:93",
+                "name": "MapPartitionsRDD"
+            },
+            "7": {
+                "callsite": "map at DataGenerator.scala:93",
+                "name": "MapPartitionsRDD"
+            }
+        },
+        "cachedRDDs": [],
+        "duration": 3841539,
+        "genstage": false,
+        "name": "map at DataGenerator.scala:93",
+        "nominalrate": 520624.67672461475,
+        "numtask": 4000,
+        "parentsIds": [],
+        "recordsread": 2000000000,
+        "recordswrite": 0.0,
+        "shufflerecordsread": 0.0,
+        "shufflerecordswrite": 2000000000,
+        "skipped": false,
+        "weight": 2.231117658834129
+    },
+    "3": {
+        "RDDIds": {
+            "10": {
+                "callsite": "sortByKey at KVDataTest.scala:165",
+                "name": "ShuffledRDD"
+            }
+        },
+        "cachedRDDs": [],
+        "duration": 5617234,
+        "genstage": false,
+        "name": "count at KVDataTest.scala:165",
+        "nominalrate": 356047.1221245189,
+        "numtask": 4000,
+        "parentsIds": [
+            2
+        ],
+        "recordsread": 0.0,
+        "recordswrite": 0.0,
+        "shufflerecordsread": 2000000000,
+        "shufflerecordswrite": 0.0,
+        "skipped": false,
+        "weight": 1.0
+    }
 }
