@@ -40,7 +40,8 @@ def main():
                             stage_dict[stage_id]["parentsIds"] = stage["Parent IDs"]
                             stage_dict[stage_id]["nominalrate"] = 0.0
                             stage_dict[stage_id]["weight"] = 0
-                            stage_dict[stage_id]["RDDIds"] = [x["RDD ID"] for x in stage["RDD Info"]]
+                            stage_dict[stage_id]["RDDIds"] = {
+                                x["RDD ID"]: {"name": x["Name"], "callsite": x["Callsite"]} for x in stage["RDD Info"]}
                             stage_dict[stage_id]["skipped"] = False
                             stage_dict[stage_id]["cachedRDDs"] = []
                             stage_dict[stage_id]["numtask"] = 0
@@ -84,23 +85,31 @@ def main():
                 try:
                     if data["Event"] == "SparkListenerJobStart":
                         for stage in data["Stage Infos"]:
+                            stage_id = stage["Stage ID"]
                             # print(stage)
                             if stage["Stage ID"] not in stage_dict.keys():
-                                stage_dict[stage["Stage ID"]] = {}
-                                stage_dict[stage["Stage ID"]]["genstage"] = True if len(stage_dict) == 1 else False
-                                stage_dict[stage["Stage ID"]]["parentsIds"] = stage["Parent IDs"]
-                                stage_dict[stage["Stage ID"]]["nominalrate"] = 0.0
-                                stage_dict[stage["Stage ID"]]["weight"] = 0
-                                stage_dict[stage["Stage ID"]]["duration"] = 0
-                                stage_dict[stage["Stage ID"]]["RDDIds"] = [x["RDD ID"] for x in stage["RDD Info"]]
-                                stage_dict[stage["Stage ID"]]["skipped"] = True
-                                stage_dict[stage["Stage ID"]]["cachedRDDs"] = []
+                                stage_dict[stage_id] = {}
+                                stage_dict[stage_id]["name"] = stage['Stage Name']
+                                stage_dict[stage_id]["genstage"] = False
+                                stage_dict[stage_id]["parentsIds"] = stage["Parent IDs"]
+                                stage_dict[stage_id]["nominalrate"] = 0.0
+                                stage_dict[stage_id]["weight"] = 0
+                                stage_dict[stage_id]["RDDIds"] = {
+                                    x["RDD ID"]: {"name": x["Name"], "callsite": x["Callsite"]} for x in
+                                    stage["RDD Info"]}
+                                stage_dict[stage_id]["skipped"] = False
+                                stage_dict[stage_id]["cachedRDDs"] = []
+                                stage_dict[stage_id]["numtask"] = 0
+                                stage_dict[stage_id]["recordsread"] = 0.0
+                                stage_dict[stage_id]["shufflerecordsread"] = 0.0
+                                stage_dict[stage_id]["recordswrite"] = 0.0
+                                stage_dict[stage_id]["shufflerecordswrite"] = 0.0
                                 for rdd_info in stage["RDD Info"]:
                                     storage_level = rdd_info["Storage Level"]
                                     if storage_level["Use Disk"] or storage_level["Use Memory"] or storage_level[
                                         "Deserialized"]:
-                                        stage_dict[stage["Stage ID"]]["cachedRDDs"].append(rdd_info["RDD ID"])
-                                skipped.append(stage["Stage ID"])
+                                        stage_dict[stage_id]["cachedRDDs"].append(rdd_info["RDD ID"])
+                                skipped.append(stage_id)
                 except KeyError:
                     None
 
