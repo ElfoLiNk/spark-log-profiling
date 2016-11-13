@@ -97,7 +97,7 @@ def main():
                                 stage_dict[stage_id]["RDDIds"] = {
                                     x["RDD ID"]: {"name": x["Name"], "callsite": x["Callsite"]} for x in
                                     stage["RDD Info"]}
-                                stage_dict[stage_id]["skipped"] = False
+                                stage_dict[stage_id]["skipped"] = True
                                 stage_dict[stage_id]["cachedRDDs"] = []
                                 stage_dict[stage_id]["numtask"] = 0
                                 stage_dict[stage_id]["recordsread"] = 0.0
