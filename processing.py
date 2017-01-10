@@ -211,7 +211,7 @@ def main():
                 totalduration -= stage_dict[key]["duration"]
 
         # Create json output
-        with open("./output_json/" + re.sub("[^a-zA-Z0-9.-]", "_", app_name) + ".json",
+        with open("./output_json/" + re.sub("[^a-zA-Z0-9.-]", "_", app_name)+"_"+log.split("-")[1]+ ".json",
                   "w") as jsonoutput:
             json.dump(stage_dict, jsonoutput, indent=4, sort_keys=True)
 
