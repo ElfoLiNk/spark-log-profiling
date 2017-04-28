@@ -135,3 +135,9 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+
+.DS_STORE
+input_json/*
+output_json/*
+weight_json/*
