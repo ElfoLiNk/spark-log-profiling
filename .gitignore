@@ -141,3 +141,9 @@ fabric.properties
 input_json/*
 output_json/*
 weight_json/*
+processed_logs/*
+
+
+
+
+\.idea/
