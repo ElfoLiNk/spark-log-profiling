@@ -11,7 +11,7 @@ import numpy as np
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 INPUT_DIR = os.path.join(ROOT_DIR, 'input_logs')
-PROCESSED_DIR = os.path.join(ROOT_DIR, 'processed_logs')
+OUTPUT_DIR = os.path.join(ROOT_DIR, 'output_json')
 
 def make_sure_path_exists(path):
     """"Check if the provided path exists. If it does not exist, create it."""
@@ -21,11 +21,15 @@ def make_sure_path_exists(path):
         if exception.errno != errno.EEXIST:
             raise
 
-def main(json_out_dir=None):
-    make_sure_path_exists(INPUT_DIR)
-    make_sure_path_exists(PROCESSED_DIR)
-    print("Start log profiling...")
-    for log in glob.glob(os.path.join(INPUT_DIR, 'app-*')):
+
+def main(input_dir=INPUT_DIR, json_out_dir=OUTPUT_DIR):
+    make_sure_path_exists(input_dir)
+    processed_dir = os.path.join(input_dir, 'processed_logs')
+    make_sure_path_exists(processed_dir)
+    print("Start log profiling: \ninput_dir:\t{}\nprocessed_dir:\t{}\noutput_dir:\t{}".format(input_dir,
+                                                                                           processed_dir,
+                                                                                           json_out_dir))
+    for log in glob.glob(os.path.join(input_dir, 'app-*.bz')):
         app_name = ""
         # Build stage dictionary
         stage_dict = OrderedDict()
@@ -229,27 +233,26 @@ def main(json_out_dir=None):
 
         # create output dir
         log_name = os.path.basename(log)
-        output_dir = os.path.join(ROOT_DIR,
-                                  'output_json',
+
+        output_dir = os.path.join(OUTPUT_DIR,
                                   re.sub("[^a-zA-Z0-9.-]",
                                          "_", app_name) +
                                   "_"+log_name.split("-")[1]) if not json_out_dir else json_out_dir
         make_sure_path_exists(output_dir)
         # Create json output
-        out_filename = "app.json" if 'Application' in app_name.split(' ') else 'app_gendata.json'
+        out_filename = 'app_datagen.json' if 'datagen' in app_name.lower() else 'app.json'
         print('ROOT_DIR: {}\nAPP_NAME: {}\noutputdir: {}\noutfilename:{}'.format(ROOT_DIR,
                                                                                  app_name,
                                                                                  output_dir,
                                                                                  out_filename))
         with open(os.path.join(output_dir, out_filename), "w") as jsonoutput:
             json.dump(stage_dict, jsonoutput, indent=4, sort_keys=True)
-        os.rename(log, os.path.join(PROCESSED_DIR, os.path.basename(log_name)))
+        os.rename(log, os.path.join(processed_dir, os.path.basename(log_name)))
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        json_out_dir = os.path.abspath(sys.argv[1])
+        in_dir = out_dir = os.path.abspath(sys.argv[1])
     else:
-        print('ERROR: You must provide at least one argument')
-        sys.exit(0)
-    main(json_out_dir=json_out_dir)
+        in_dir = out_dir = None
+    main(json_out_dir=out_dir, input_dir=in_dir)
