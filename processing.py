@@ -22,9 +22,50 @@ def make_sure_path_exists(path):
             raise
 
 
-def main(input_dir=INPUT_DIR, json_out_dir=OUTPUT_DIR):
-    make_sure_path_exists(input_dir)
+def gather_records_rw(stages):
+    not_skipped = {k: v for k, v in stages.items() if v['skipped'] == False}
+    dataset = sorted(map(lambda args: (args[1].update({'id': int(args[0])}) or args[1]),
+                         not_skipped.items()), key=lambda v: v['id'], reverse=False)
+
+    # total_duration = sum(map(lambda x: x['duration'], dataset))/1000
+    # total_data = sum(map(lambda x: max(x['recordsread'], x['recordswrite'], x['shufflerecordsread'], x['shufflerecordswrite']), dataset))
+    reads = {}
+    writes = {}
+    numtask = dataset[0]['numtask']
+    for i in range(0, len(dataset)):
+        stage = dataset[i]
+        stage_id = stage['id']
+
+        reads[stage_id] = 0
+        if stage['shufflerecordsread'] > 0 and stage['shufflerecordsread'] % numtask > 0:
+            reads[stage_id] = stage['shufflerecordsread']
+        elif stage['recordsread'] > 0 and stage['recordsread'] % numtask > 0:
+            reads[stage_id] = stage['recordsread']
+        else:
+            for parent_id in stage['parentsIds']:
+                reads[stage_id] += writes[parent_id]
+
+        if stage['shufflerecordswrite'] > 0 and stage['shufflerecordswrite'] % numtask > 0:
+            writes[stage_id] = stage['shufflerecordswrite']
+        elif stage['recordswrite'] > 0 and stage['recordswrite'] % numtask > 0:
+            writes[stage_id] = stage['recordswrite']
+        else:
+            writes[stage_id] = reads[stage_id]
+    print(reads)
+    print(writes)
+    # add actual reads, writes and io_factor writes to stages_dict
+    for k, v in reads.items():
+        stages[k]['actual_records_read'] = v
+        stages[k]['actual_records_write'] = writes[k]
+        stages[k]['t_record_ta_executor'] = float(stages[k]['duration']) / float(v)
+        stages[k]['io_factor'] = float(writes[k]) / float(v)
+
+
+def main(input_dir=ROOT_DIR, json_out_dir=OUTPUT_DIR, reprocess=False):
     processed_dir = os.path.join(input_dir, 'processed_logs')
+    if reprocess:
+        input_dir = processed_dir
+    make_sure_path_exists(input_dir)
     make_sure_path_exists(processed_dir)
     print("Start log profiling: \ninput_dir:\t{}\nprocessed_dir:\t{}\noutput_dir:\t{}".format(input_dir,
                                                                                            processed_dir,
@@ -161,7 +202,7 @@ def main(input_dir=INPUT_DIR, json_out_dir=OUTPUT_DIR):
                                 cached.remove(rdd)
                     except KeyError:
                         None
-
+        gather_records_rw(stage_dict)
         print(stage_dict)
 
         # REPEATER = re.compile(r"(.+?)\1+$")
@@ -253,6 +294,6 @@ def main(input_dir=INPUT_DIR, json_out_dir=OUTPUT_DIR):
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         in_dir = out_dir = os.path.abspath(sys.argv[1])
+        main(json_out_dir=out_dir, input_dir=in_dir)
     else:
-        in_dir = out_dir = None
-    main(json_out_dir=out_dir, input_dir=in_dir)
+        main(reprocess=True)
