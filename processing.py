@@ -37,10 +37,11 @@ def gather_records_rw(stages):
         stage_id = stage['id']
 
         reads[stage_id] = 0
-        if stage['shufflerecordsread'] > 0 and stage['shufflerecordsread'] % numtask > 0:
-            reads[stage_id] = stage['shufflerecordsread']
-        elif stage['recordsread'] > 0 and stage['recordsread'] % numtask > 0:
-            reads[stage_id] = stage['recordsread']
+        if len(stage['parentsIds']) == 0:
+            if stage['shufflerecordsread'] > 0 and stage['shufflerecordsread'] % numtask > 0:
+                reads[stage_id] = stage['shufflerecordsread']
+            elif stage['recordsread'] > 0 and stage['recordsread'] % numtask > 0:
+                reads[stage_id] = stage['recordsread']
         else:
             for parent_id in stage['parentsIds']:
                 reads[stage_id] += writes[parent_id]
@@ -57,8 +58,8 @@ def gather_records_rw(stages):
     for k, v in reads.items():
         stages[k]['actual_records_read'] = v
         stages[k]['actual_records_write'] = writes[k]
-        stages[k]['t_record_ta_executor'] = float(stages[k]['duration']) / float(v)
-        stages[k]['io_factor'] = float(writes[k]) / float(v)
+        stages[k]['t_record_ta_executor'] = float(stages[k]['duration']) / float(v) if v > 0 else 0
+        stages[k]['io_factor'] = float(writes[k]) / float(v) if v > 0 else 0
 
 
 def main(input_dir=ROOT_DIR, json_out_dir=OUTPUT_DIR, reprocess=False):
