@@ -38,9 +38,6 @@ def gather_records_rw(stages):
 
         reads[stage_id] = 0
         if len(stage['parentsIds']) == 0:
-            if stage['shufflerecordsread'] > 0 and stage['shufflerecordsread'] % numtask > 0:
-                reads[stage_id] = stage['shufflerecordsread']
-            elif stage['recordsread'] > 0 and stage['recordsread'] % numtask > 0:
                 reads[stage_id] = stage['recordsread']
         else:
             for parent_id in stage['parentsIds']:
