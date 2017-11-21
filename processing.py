@@ -200,93 +200,94 @@ def main(input_dir=ROOT_DIR, json_out_dir=OUTPUT_DIR, reprocess=False):
                                 cached.remove(rdd)
                     except KeyError:
                         None
-        gather_records_rw(stage_dict)
-        print(stage_dict)
+        if stage_dict:
+            gather_records_rw(stage_dict)
+            print(stage_dict)
 
-        # REPEATER = re.compile(r"(.+?)\1+$")
-        # def repeated(s):
-        #     match = REPEATER.match(s)
-        #     return match.group(1) if match else None
-        #
-        # # Find iterations
-        # lenparent = []
-        # for key in stageDict.keys():
-        #     lenparent.append(str(len(stageDict[key]['Parent IDs'])))
-        # i = 0
-        # stage_repeated = None
-        # while stage_repeated == None and i < len(lenparent):
-        #     stage_repeated = repeated("".join(lenparent[i:]))
-        #     i += 1
-        # print(i, stage_repeated)
+            # REPEATER = re.compile(r"(.+?)\1+$")
+            # def repeated(s):
+            #     match = REPEATER.match(s)
+            #     return match.group(1) if match else None
+            #
+            # # Find iterations
+            # lenparent = []
+            # for key in stageDict.keys():
+            #     lenparent.append(str(len(stageDict[key]['Parent IDs'])))
+            # i = 0
+            # stage_repeated = None
+            # while stage_repeated == None and i < len(lenparent):
+            #     stage_repeated = repeated("".join(lenparent[i:]))
+            #     i += 1
+            # print(i, stage_repeated)
 
-        # def setWeight(key):
-        #     for parentid in stageDict[key]['parentsIds']:
-        #         w1 = stageDict[key]["weight"] + 1
-        #         w2 = stageDict[parentid]["weight"]
-        #         stageDict[parentid]["weight"] = max(w1, w2)
-        #         setWeight(parentid)
-        #
-        # # Set weights
-        # for key in reversed(stageDict.keys()):
-        #     setWeight(key)
+            # def setWeight(key):
+            #     for parentid in stageDict[key]['parentsIds']:
+            #         w1 = stageDict[key]["weight"] + 1
+            #         w2 = stageDict[parentid]["weight"]
+            #         stageDict[parentid]["weight"] = max(w1, w2)
+            #         setWeight(parentid)
+            #
+            # # Set weights
+            # for key in reversed(stageDict.keys()):
+            #     setWeight(key)
 
-        stage_to_do = len(list(stage_dict.keys())) - len(skipped)
-        for stage_id in sorted(stage_dict.keys()):
-            parent_output = 0
-            parent_input = 0
-            if stage_id not in skipped:
-                stage_dict[stage_id]["weight"] = stage_to_do
-                stage_to_do -= 1
-                for parent_id in stage_dict[stage_id]["parentsIds"]:
-                    parent_output += stage_dict[parent_id]["recordswrite"]
-                    parent_output += stage_dict[parent_id]["shufflerecordswrite"]
-                    parent_input += stage_dict[parent_id]["recordsread"]
-                    parent_input += stage_dict[parent_id]["shufflerecordsread"]
-                if parent_output != 0:
-                    stage_dict[stage_id]["nominalrate"] = parent_output / (
-                        stage_dict[stage_id]["duration"] / 1000.0)
-                elif parent_input != 0:
-                    stage_dict[stage_id]["nominalrate"] = parent_input / (
-                        stage_dict[stage_id]["duration"] / 1000.0)
-                else:
-                    stage_input = stage_dict[stage_id]["recordsread"] + stage_dict[stage_id][
-                        "shufflerecordsread"]
-                    if stage_input != 0 and stage_input != stage_dict[stage_id]["numtask"]:
-                        stage_dict[stage_id]["nominalrate"] = stage_input / (
+            stage_to_do = len(list(stage_dict.keys())) - len(skipped)
+            for stage_id in sorted(stage_dict.keys()):
+                parent_output = 0
+                parent_input = 0
+                if stage_id not in skipped:
+                    stage_dict[stage_id]["weight"] = stage_to_do
+                    stage_to_do -= 1
+                    for parent_id in stage_dict[stage_id]["parentsIds"]:
+                        parent_output += stage_dict[parent_id]["recordswrite"]
+                        parent_output += stage_dict[parent_id]["shufflerecordswrite"]
+                        parent_input += stage_dict[parent_id]["recordsread"]
+                        parent_input += stage_dict[parent_id]["shufflerecordsread"]
+                    if parent_output != 0:
+                        stage_dict[stage_id]["nominalrate"] = parent_output / (
+                            stage_dict[stage_id]["duration"] / 1000.0)
+                    elif parent_input != 0:
+                        stage_dict[stage_id]["nominalrate"] = parent_input / (
                             stage_dict[stage_id]["duration"] / 1000.0)
                     else:
-                        stage_output = stage_dict[stage_id]["recordswrite"] + stage_dict[stage_id][
-                            "shufflerecordswrite"]
-                        stage_dict[stage_id]["nominalrate"] = stage_input / (
-                            stage_dict[stage_id]["duration"] / 1000.0)
-                if stage_dict[stage_id]["nominalrate"] == 0.0:
-                    stage_dict[stage_id]["genstage"] = True
+                        stage_input = stage_dict[stage_id]["recordsread"] + stage_dict[stage_id][
+                            "shufflerecordsread"]
+                        if stage_input != 0 and stage_input != stage_dict[stage_id]["numtask"]:
+                            stage_dict[stage_id]["nominalrate"] = stage_input / (
+                                stage_dict[stage_id]["duration"] / 1000.0)
+                        else:
+                            stage_output = stage_dict[stage_id]["recordswrite"] + stage_dict[stage_id][
+                                "shufflerecordswrite"]
+                            stage_dict[stage_id]["nominalrate"] = stage_input / (
+                                stage_dict[stage_id]["duration"] / 1000.0)
+                    if stage_dict[stage_id]["nominalrate"] == 0.0:
+                        stage_dict[stage_id]["genstage"] = True
 
-        totalduration = stage_dict[0]["totalduration"]
-        for key in stage_dict.keys():
-            if key not in skipped:
-                old_weight = stage_dict[key]["weight"]
-                stage_dict[key]["weight"] = np.mean(
-                    [old_weight, totalduration / stage_dict[key]["duration"]])
-                totalduration -= stage_dict[key]["duration"]
+            totalduration = stage_dict[0]["totalduration"]
+            for key in stage_dict.keys():
+                if key not in skipped:
+                    old_weight = stage_dict[key]["weight"]
+                    stage_dict[key]["weight"] = np.mean(
+                        [old_weight, totalduration / stage_dict[key]["duration"]])
+                    totalduration -= stage_dict[key]["duration"]
 
-        # create output dir
-        log_name = os.path.basename(log)
+            # create output dir
+            log_name = os.path.basename(log)
 
-        output_dir = os.path.join(OUTPUT_DIR,
-                                  re.sub("[^a-zA-Z0-9.-]",
-                                         "_", app_name) +
-                                  "_"+log_name.split("-")[1]) if not json_out_dir else json_out_dir
-        make_sure_path_exists(output_dir)
-        # Create json output
-        out_filename = 'app_datagen.json' if 'datagen' in app_name.lower() else 'app.json'
-        print('ROOT_DIR: {}\nAPP_NAME: {}\noutputdir: {}\noutfilename:{}'.format(ROOT_DIR,
-                                                                                 app_name,
-                                                                                 output_dir,
-                                                                                 out_filename))
-        with open(os.path.join(output_dir, out_filename), "w") as jsonoutput:
-            json.dump(stage_dict, jsonoutput, indent=4, sort_keys=True)
-        os.rename(log, os.path.join(processed_dir, os.path.basename(log_name)))
+            output_dir = os.path.join(OUTPUT_DIR,
+                                      re.sub("[^a-zA-Z0-9.-]",
+                                             "_", app_name) +
+                                      "_"+log_name.split("-")[1]) if not json_out_dir else json_out_dir
+            make_sure_path_exists(output_dir)
+            # Create json output
+            out_filename = 'app_datagen.json' if 'datagen' in app_name.lower() else 'app.json'
+            print('ROOT_DIR: {}\nAPP_NAME: {}\noutputdir: {}\noutfilename:{}'.format(ROOT_DIR,
+                                                                                     app_name,
+                                                                                     output_dir,
+                                                                                     out_filename))
+            with open(os.path.join(output_dir, out_filename), "w") as jsonoutput:
+                json.dump(stage_dict, jsonoutput, indent=4, sort_keys=True)
+            os.rename(log, os.path.join(processed_dir, os.path.basename(log_name)))
 
 
 if __name__ == "__main__":
