@@ -280,7 +280,8 @@ def main(input_dir=ROOT_DIR, json_out_dir=OUTPUT_DIR, reprocess=False):
                                       "_"+log_name.split("-")[1]) if not json_out_dir else json_out_dir
             make_sure_path_exists(output_dir)
             # Create json output
-            out_filename = 'app_datagen.json' if 'datagen' in app_name.lower() else 'app.json'
+            datagen_strings = ['datagen', 'scheduling-throughput']
+            out_filename = 'app_datagen.json' if any(x in app_name.lower() for x in datagen_strings) else 'app.json'
             print('ROOT_DIR: {}\nAPP_NAME: {}\noutputdir: {}\noutfilename:{}'.format(ROOT_DIR,
                                                                                      app_name,
                                                                                      output_dir,
