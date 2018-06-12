@@ -23,10 +23,12 @@ def make_sure_path_exists(path):
 
 
 def gather_records_rw(stages):
-    not_skipped = {k: v for k, v in stages.items() if v['skipped'] == False}
+    not_skipped = {k: v for k, v in stages.items() if not v['skipped']}
     dataset = sorted(map(lambda args: (args[1].update({'id': int(args[0])}) or args[1]),
                          not_skipped.items()), key=lambda v: v['id'], reverse=False)
-
+    skipped = {k for k, v in stages.items() if v['skipped']}
+    for k in skipped:
+        stages.pop(k)
     # total_duration = sum(map(lambda x: x['duration'], dataset))/1000
     # total_data = sum(map(lambda x: max(x['recordsread'], x['recordswrite'], x['shufflerecordsread'], x['shufflerecordswrite']), dataset))
     reads = {}
